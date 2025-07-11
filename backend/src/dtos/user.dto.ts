@@ -6,3 +6,8 @@ export interface CreateUserDto {
     darkMode: Boolean;
   }
 }
+
+
+export interface UpdateDarkModeDto {
+  email: string;
+}

@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from "mongoose";
-import { CreateDeckDto } from "../dtos/CreateDeck.dto";
+import { CreateDeckDto } from "../dtos/deck.dto";
 
 export interface IDeck extends Document, CreateDeckDto {
   createdAt: Date;

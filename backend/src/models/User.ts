@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from "mongoose";
-import { CreateUserDto } from "../dtos/CreateUser.dto";
+import { CreateUserDto } from "../dtos/user.dto";
 
 export interface IUser extends Document, CreateUserDto {
   isVerified: boolean;

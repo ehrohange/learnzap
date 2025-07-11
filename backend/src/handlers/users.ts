@@ -1,5 +1,5 @@
 import { Request, Response } from "express-serve-static-core";
-import { CreateUserDto } from "../dtos/CreateUser.dto";
+import { CreateUserDto, UpdateDarkModeDto } from "../dtos/user.dto";
 import User from "../models/User";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
@@ -24,10 +24,13 @@ export async function getUserById(request: Request, response: Response) {
   try {
     const user = await User.findById(request.params.id);
     if (!user) {
-      return response.status(400).json({ message: "User does not exist." });
+      return response.status(404).json({ message: "User does not exist." });
     }
     return response.status(200).json(user);
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+    return response.status(400).json({ message: "Error finding user." });
+  }
 }
 
 export async function createUser(
@@ -76,5 +79,28 @@ export async function createUser(
   } catch (error) {
     console.error("Error creating user:", error);
     return response.status(400).json({ message: "Error creating user." });
+  }
+}
+
+export async function updateDarkModeSetting(
+  request: Request,
+  response: Response
+) {
+  try {
+    const user = await User.findById(request.params.id);
+    if (!user) {
+      return response.status(404).json({ message: "User does not exist." });
+    }
+    const darkModeSetting = user.settings.darkMode;
+    user.settings.darkMode = !darkModeSetting;
+
+    await user.save();
+
+    return response
+      .status(200)
+      .json({ message: "Theme successfully updated!" });
+  } catch (error) {
+    console.error(error);
+    return response.status(400).json({ message: "Error updating theme." });
   }
 }
