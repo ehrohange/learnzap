@@ -3,16 +3,22 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export async function sendEmail(to: string, subject: string, html: string) {
+  const username = process.env.GMAIL_USER;
+  const password = process.env.GMAIL_PASS;
+
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASS,
+      user: username,
+      pass: password,
     },
+    tls: {
+      rejectUnauthorized: false,
+    }
   });
 
   const info = await transporter.sendMail({
-    from: `"Your App" <${process.env.GMAIL_USER}>`,
+    from: `LearnZap <${process.env.GMAIL_USER}>`,
     to,
     subject,
     html,
