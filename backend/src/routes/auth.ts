@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import { Router } from "express";
-import { authLogin } from "../handlers/auth";
+import { authLogin } from "../handlers/authHandler";
 
 const router = Router();
 

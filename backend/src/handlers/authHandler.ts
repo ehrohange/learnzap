@@ -16,7 +16,7 @@ export async function authLogin(request: Request, response: Response) {
       return response.status(404).send({ message: "User does not exist." });
     }
 
-    const validPassword = bcrypt.compareSync(password, user.password);
+    const validPassword = await bcrypt.compare(password, user.password);
 
     if (!validPassword) {
       return response.status(400).send({ message: "Invalid password." });

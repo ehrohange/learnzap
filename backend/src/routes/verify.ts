@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { verifyUser } from "../handlers/verify";
+import { verifyUser } from "../handlers/verifyHandler";
 
 const router = Router();
 

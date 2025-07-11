@@ -7,7 +7,7 @@ export interface CreateUserDto {
   }
 }
 
-
-export interface UpdateDarkModeDto {
-  email: string;
+export interface UpdatePasswordDto {
+  password: string;
+  newPassword: string;
 }
