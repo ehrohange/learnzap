@@ -45,3 +45,16 @@ export async function authLogin(request: Request, response: Response) {
     response.send({ message: error });
   }
 }
+
+export async function sendOTP (request: Request, response: Response) {
+  const {email} = request.body;
+  
+}
+
+export async function updateToken (request: Request, response: Response) {
+  try {
+    const user = await User.findById(request.params.id);
+  } catch (error) {
+    
+  }
+}

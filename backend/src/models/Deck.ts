@@ -16,6 +16,6 @@ const deckSchema = new Schema<IDeck>(
   }
 );
 
-const User = mongoose.model<IDeck>("Deck", deckSchema);
+const Deck = mongoose.model<IDeck>("Deck", deckSchema);
 
-export default User;
+export default Deck;
